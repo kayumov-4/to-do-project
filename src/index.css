@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
+
+body {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 600;
+}
+
+.font-exo-bold {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 700;
+}
+
+.font-exo-medium {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 500;
+}
+.font-exo-regular {
+  font-family: "Exo 2", sans-serif;
+  font-weight: 400;
+}
+
+.font-balo-semibold {
+  font-family: "Baloo 2", cursive;
+  font-weight: 600;
+}
+
+.blue {
+  color: #1c1d22;
+}
+.grey {
+  color: rgba(28, 29, 34, 0.5);
+}
+
+.avatar {
+  background-color: #fff !important;
+}
+.ant-modal-mask {
+  /* Apply your custom styles here */
+  background-color: rgba(
+    140,
+    22,
+    22,
+    0.851
+  ); /* Example background color with opacity */
+}
+
+.ant {
+  .ant-picker-cell {
+    color: white !important;
+  }
+
+  .ant-picker-body {
+    font-size: 19px;
+    border: 2px solid #2a2b2f !important;
+    background-color: #2a2b2f;
+  }
+}
+
+.set_title {
+  .ant-drawer-title {
+    color: #fff !important;
+  }
+  .anticon-close {
+    display: flex;
+    color: white;
+  }
+}
+
+.ant-input .css-dev-only-do-not-override-17a39f8 {
+  background-color: #fff;
+}
+
+/* input[type="password"] {
+  color: white !important;
+  background-color: #2a2b2f;
+} */

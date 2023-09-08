@@ -1,0 +1,73 @@
+{
+  "habits": [
+    {
+      "id": 1,
+      "HabitId": 1169291358101,
+      "habitName": "Reading Qur'an",
+      "habitStep": "10 pages"
+    },
+    {
+      "id": 2,
+      "HabitId": 2169291358101,
+      "habitName": "Reading Book",
+      "habitStep": "25 pages"
+    },
+    {
+      "id": 3,
+      "HabitId": 3169291358101,
+      "habitName": "Listening Al-Waqiah",
+      "habitStep": "1 times"
+    },
+    {
+      "id": 4,
+      "HabitId": 4169291358101,
+      "habitName": "Listening Maruzah",
+      "habitStep": "30 minutes"
+    },
+    {
+      "id": 5,
+      "HabitId": 5169291358101,
+      "habitName": "Coding",
+      "habitStep": "3 hours"
+    },
+    {
+      "id": 6,
+      "HabitId": 1692913581510,
+      "habitName": "Salavat",
+      "habitStep": "300"
+    },
+    {
+      "id": 7,
+      "HabitId": 1691913581010,
+      "habitName": "Istigfar",
+      "habitStep": "700"
+    },
+    {
+      "id": 8,
+      "HabitId": 8169291358101,
+      "habitName": "Morning Azkars",
+      "habitStep": "1 times"
+    },
+    {
+      "id": 9,
+      "HabitId": 1693304361176,
+      "habitName": "afdg",
+      "habitStep": "adga"
+    },
+    {
+      "id": 1693992741339,
+      "habitName": "z`xczv",
+      "habitStep": "12"
+    },
+    {
+      "id": 1694082365649,
+      "habitName": "Assalomu alaykumfa",
+      "habitStep": "asfas"
+    },
+    {
+      "id": 1694141036599,
+      "habitName": "dfdgh",
+      "habitStep": "gfhj"
+    }
+  ]
+}

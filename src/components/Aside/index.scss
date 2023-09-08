@@ -1,0 +1,53 @@
+#aside_left {
+  .a_hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    svg {
+      height: 22px;
+      width: 24px;
+    }
+    &:hover {
+      padding: 13px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 100%;
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+#aside_right {
+  h1 {
+    cursor: pointer;
+  }
+  .hover:hover {
+    h1 {
+      color: white;
+    }
+
+    svg {
+      path {
+        stroke: white;
+        opacity: 75%;
+      }
+    }
+  }
+  .hover2:hover {
+    h1 {
+      color: black;
+    }
+
+    svg {
+      path {
+        stroke: black;
+        opacity: 75%;
+      }
+    }
+  }
+  background: white;
+  box-shadow: 40px 180px 80px rgba(28, 29, 34, 0.06);
+}
