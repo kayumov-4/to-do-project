@@ -4,8 +4,6 @@ import { Droppable } from "react-beautiful-dnd";
 import { PlusCircleFilled } from "@ant-design/icons";
 
 const Column = ({ data, showDrawer, title, columnId }) => {
-  const theme = localStorage.getItem("theme");
-  const [selectedButton, setSelectedButton] = useState(theme);
   return (
     <div className="wrapper_left border-dashed dark:border-solid dark:bg-[#24262C] dark:border-[#24262C] border-2 rounded-xl  w-[352px] pt-6 pb-4 px-4 flex flex-col gap-4 my-5">
       <div className="flex items-center justify-between">

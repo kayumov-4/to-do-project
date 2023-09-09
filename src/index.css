@@ -65,11 +65,19 @@ body {
   .ant-picker-cell {
     color: white !important;
   }
-
   .ant-picker-body {
-    font-size: 19px;
+    font-size: 17px;
     border: 2px solid #2a2b2f !important;
     background-color: #2a2b2f;
+  }
+  .ant-picker-cell-selected {
+    background-color: #1c1d22 !important;
+    .ant-picker-calendar-date {
+      background-color: #1c1d22 !important;
+    }
+    .ant-picker-calendar-date-value {
+      color: white !important;
+    }
   }
 }
 
@@ -83,9 +91,9 @@ body {
   }
 }
 
-.ant-input .css-dev-only-do-not-override-17a39f8 {
+/* .ant-input .css-dev-only-do-not-override-17a39f8 {
   background-color: #fff;
-}
+} */
 
 /* input[type="password"] {
   color: white !important;

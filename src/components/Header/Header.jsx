@@ -102,7 +102,7 @@ function Header() {
                   <HoverCard className="">
                     <HoverCardTrigger asChild>
                       <AvatarImage
-                        className="bg-white object-cover avatar cursor-pointer"
+                        className="bg-white object-cover avatar cursor-pointer z-40"
                         src={user}
                       />
                     </HoverCardTrigger>
