@@ -286,7 +286,7 @@ function Main() {
       {openDoneDrawer && (
         <DrawerComponent
           setRadioInp={setRadioInp}
-          title={"Create a new In Progress todo"}
+          title={"Create a new Finished todo"}
           formSubmit={doneFormSubmit}
           open={openDoneDrawer}
           setOpen={setOpenDoneDrawer}

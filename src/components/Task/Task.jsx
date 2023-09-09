@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import CustomizedProgressBars from "../UI/ProgressBar";
+import CustomizedProgressBars from "../UI/ProgressBar/ProgressBar";
 import { Draggable } from "react-beautiful-dnd";
 import { InfoCircleFilled } from "@ant-design/icons";
 import { ThemeContext } from "../../context/themeContext";
@@ -9,8 +9,8 @@ function Task({
   index,
 }) {
   const { theme, setTheme } = useContext(ThemeContext);
-  const [finishedSteps, setFinishedSteps] = useState(2);
-  const task_step = Number(taskStep.slice(0, 2));
+  const [finishedSteps, setFinishedSteps] = useState(1);
+  const task_step = parseInt(taskStep);
   const calculateProgress = (finished, total) => {
     let prog = Math.round(100 / total);
     return prog * finished;
@@ -64,11 +64,11 @@ function Task({
               Progress
             </a>
             <p className="dark:text-[#FFFFFF]">
-              {finishedSteps}/{task_step ? task_step : 6}
+              {finishedSteps}/{task_step}
             </p>
           </div>
-          <div className="mt-[-20px]">
-            <CustomizedProgressBars value={result} />
+          <div className="mt-[10px]">
+            <CustomizedProgressBars value={result} theme={theme} />
           </div>
           <div className="flex items-center justify-between mt-[10px]">
             <a

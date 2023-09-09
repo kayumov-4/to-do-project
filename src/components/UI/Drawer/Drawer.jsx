@@ -31,7 +31,7 @@ const DrawerComponent = ({
           <input
             required
             id="inputTask"
-            className="border w-full h-[40px] rounded-md pl-[10px] text-md mb-3 dark:text-black"
+            className="border w-full h-[40px] rounded-md pl-[10px] text-md mb-3 dark:bg-[#292B31] dark:text-white"
             type="text"
             placeholder="Task name"
           />
@@ -39,7 +39,7 @@ const DrawerComponent = ({
           <input
             required
             id="inputProject"
-            className="border w-full h-[40px] rounded-md pl-[10px] text-md mb-3 dark:text-black"
+            className="border w-full h-[40px] rounded-md pl-[10px] text-md mb-3 dark:bg-[#292B31] dark:text-white"
             type="text"
             placeholder="Project name"
           />
@@ -95,9 +95,9 @@ const DrawerComponent = ({
             </Radio.Group>
             <InputNumber
               id="unit_number"
-              className="w-[90px] dark:bg-[#292B31] dark:text-white dark:text-opacity-75"
+              className="w-[90px] dark:bg-[#292B31] dark:text-white text-white "
               min={1}
-              max={10}
+              max={500}
               defaultValue={3}
             />
           </div>
@@ -108,7 +108,7 @@ const DrawerComponent = ({
               <select
                 required
                 onChange={(e) => setCategory(e.target.value)}
-                className="items-center dark:text-black  h-[30px] w-[150px] pl-3  border rounded-lg"
+                className="items-center dark:text-white dark:bg-[#292B31] h-[30px] w-[150px] pl-3  border rounded-lg"
                 name="category"
                 id=""
               >
