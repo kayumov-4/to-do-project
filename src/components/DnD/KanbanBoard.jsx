@@ -14,93 +14,24 @@ const KanbanBoard = ({
   showInProgressDrawer,
   showDoneDrawer,
 }) => {
-  const onDragEnd = (result) => {
-    if (!result.destination) return;
-
-    const sourceColumnId = result.source.droppableId;
-    const destinationColumnId = result.destination.droppableId;
-    //   TODOS     ------------------------
-    if (sourceColumnId == 1) {
-      if (destinationColumnId == 2) {
-        const movedTask = todo.find((task) => task._id === result.draggableId);
-        todo.pop(result.destination.index);
-        Todo.updateTodo(movedTask._id, {
-          ...movedTask,
-          taskStatus: "in-progress",
-        });
-        setInProgress((prevTasks) => [...prevTasks, movedTask]);
-      } else if (destinationColumnId == 3) {
-        const movedTask = todo.find((task) => task._id === result.draggableId);
-        todo.pop(result.destination.index);
-        Todo.updateTodo(movedTask._id, {
-          ...movedTask,
-          taskStatus: "done",
-        });
-        setDone((prevTasks) => [...prevTasks, movedTask]);
-      }
-      // INPROGRESS ------------------------
-    } else if (sourceColumnId == 2) {
-      if (destinationColumnId == 1) {
-        const movedTask = inProgress.find(
-          (task) => task._id === result.draggableId
-        );
-        inProgress.pop(result.destination.index);
-
-        Todo.updateTodo(movedTask._id, {
-          ...movedTask,
-          taskStatus: "todo",
-        });
-        setTodo((prevTasks) => [...prevTasks, movedTask]);
-      } else if (destinationColumnId == 3) {
-        const movedTask = inProgress.find(
-          (task) => task._id === result.draggableId
-        );
-        inProgress.pop(result.destination.index);
-
-        Todo.updateTodo(movedTask._id, {
-          ...movedTask,
-          taskStatus: "done",
-        });
-        setDone((prevTasks) => [...prevTasks, movedTask]);
-      }
-      // DONE       ------------------------
-    } else if (sourceColumnId == 3) {
-      if (destinationColumnId == 2) {
-        const movedTask = done.find((task) => task._id === result.draggableId);
-        done.pop(result.destination.index);
-
-        Todo.updateTodo(movedTask._id, {
-          ...movedTask,
-          taskStatus: "in-progress",
-        });
-        setInProgress((prevTasks) => [...prevTasks, movedTask]);
-      } else if (destinationColumnId == 1) {
-        const movedTask = done.find((task) => task._id === result.draggableId);
-        done.pop(result.destination.index);
-
-        Todo.updateTodo(movedTask._id, {
-          ...movedTask,
-          taskStatus: "todo",
-        });
-        setTodo((prevTasks) => [...prevTasks, movedTask]);
-      }
-    }
-  };
-  // OLD VERSION
-
   // const onDragEnd = (result) => {
   //   if (!result.destination) return;
+
+  //   const sourceColumnId = result.source.droppableId;
+  //   const destinationColumnId = result.destination.droppableId;
   //   //   TODOS     ------------------------
-  //   if (result.source.droppableId == 1) {
-  //     if (result.destination.droppableId == 2) {
-  //       const movedTask = todo.pop(result.destination.index);
+  //   if (sourceColumnId == 1) {
+  //     if (destinationColumnId == 2) {
+  //       const movedTask = todo.find((task) => task._id === result.draggableId);
+  //       todo.pop(result.destination.index);
   //       Todo.updateTodo(movedTask._id, {
   //         ...movedTask,
   //         taskStatus: "in-progress",
   //       });
   //       setInProgress((prevTasks) => [...prevTasks, movedTask]);
-  //     } else if (result.destination.droppableId == 3) {
-  //       const movedTask = todo.pop(result.destination.index);
+  //     } else if (destinationColumnId == 3) {
+  //       const movedTask = todo.find((task) => task._id === result.draggableId);
+  //       todo.pop(result.destination.index);
   //       Todo.updateTodo(movedTask._id, {
   //         ...movedTask,
   //         taskStatus: "done",
@@ -108,16 +39,24 @@ const KanbanBoard = ({
   //       setDone((prevTasks) => [...prevTasks, movedTask]);
   //     }
   //     // INPROGRESS ------------------------
-  //   } else if (result.source.droppableId == 2) {
-  //     if (result.destination.droppableId == 1) {
-  //       const movedTask = inProgress.pop(result.destination.index);
+  //   } else if (sourceColumnId == 2) {
+  //     if (destinationColumnId == 1) {
+  //       const movedTask = inProgress.find(
+  //         (task) => task._id === result.draggableId
+  //       );
+  //       inProgress.pop(result.destination.index);
+
   //       Todo.updateTodo(movedTask._id, {
   //         ...movedTask,
   //         taskStatus: "todo",
   //       });
   //       setTodo((prevTasks) => [...prevTasks, movedTask]);
-  //     } else if (result.destination.droppableId == 3) {
-  //       const movedTask = inProgress.pop(result.destination.index);
+  //     } else if (destinationColumnId == 3) {
+  //       const movedTask = inProgress.find(
+  //         (task) => task._id === result.draggableId
+  //       );
+  //       inProgress.pop(result.destination.index);
+
   //       Todo.updateTodo(movedTask._id, {
   //         ...movedTask,
   //         taskStatus: "done",
@@ -125,16 +64,20 @@ const KanbanBoard = ({
   //       setDone((prevTasks) => [...prevTasks, movedTask]);
   //     }
   //     // DONE       ------------------------
-  //   } else if (result.source.droppableId == 3) {
-  //     if (result.destination.droppableId == 2) {
-  //       const movedTask = done.pop(result.destination.index);
+  //   } else if (sourceColumnId == 3) {
+  //     if (destinationColumnId == 2) {
+  //       const movedTask = done.find((task) => task._id === result.draggableId);
+  //       done.pop(result.destination.index);
+
   //       Todo.updateTodo(movedTask._id, {
   //         ...movedTask,
   //         taskStatus: "in-progress",
   //       });
   //       setInProgress((prevTasks) => [...prevTasks, movedTask]);
-  //     } else if (result.destination.droppableId == 1) {
-  //       const movedTask = done.pop(result.destination.index);
+  //     } else if (destinationColumnId == 1) {
+  //       const movedTask = done.find((task) => task._id === result.draggableId);
+  //       done.pop(result.destination.index);
+
   //       Todo.updateTodo(movedTask._id, {
   //         ...movedTask,
   //         taskStatus: "todo",
@@ -143,6 +86,63 @@ const KanbanBoard = ({
   //     }
   //   }
   // };
+  // OLD VERSION
+
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
+    //   TODOS     ------------------------
+    if (result.source.droppableId == 1) {
+      if (result.destination.droppableId == 2) {
+        const movedTask = todo.pop(result.destination.index);
+        Todo.updateTodo(movedTask._id, {
+          ...movedTask,
+          taskStatus: "in-progress",
+        });
+        setInProgress((prevTasks) => [...prevTasks, movedTask]);
+      } else if (result.destination.droppableId == 3) {
+        const movedTask = todo.pop(result.destination.index);
+        Todo.updateTodo(movedTask._id, {
+          ...movedTask,
+          taskStatus: "done",
+        });
+        setDone((prevTasks) => [...prevTasks, movedTask]);
+      }
+      // INPROGRESS ------------------------
+    } else if (result.source.droppableId == 2) {
+      if (result.destination.droppableId == 1) {
+        const movedTask = inProgress.pop(result.destination.index);
+        Todo.updateTodo(movedTask._id, {
+          ...movedTask,
+          taskStatus: "todo",
+        });
+        setTodo((prevTasks) => [...prevTasks, movedTask]);
+      } else if (result.destination.droppableId == 3) {
+        const movedTask = inProgress.pop(result.destination.index);
+        Todo.updateTodo(movedTask._id, {
+          ...movedTask,
+          taskStatus: "done",
+        });
+        setDone((prevTasks) => [...prevTasks, movedTask]);
+      }
+      // DONE       ------------------------
+    } else if (result.source.droppableId == 3) {
+      if (result.destination.droppableId == 2) {
+        const movedTask = done.pop(result.destination.index);
+        Todo.updateTodo(movedTask._id, {
+          ...movedTask,
+          taskStatus: "in-progress",
+        });
+        setInProgress((prevTasks) => [...prevTasks, movedTask]);
+      } else if (result.destination.droppableId == 1) {
+        const movedTask = done.pop(result.destination.index);
+        Todo.updateTodo(movedTask._id, {
+          ...movedTask,
+          taskStatus: "todo",
+        });
+        setTodo((prevTasks) => [...prevTasks, movedTask]);
+      }
+    }
+  };
 
   //
   return (
