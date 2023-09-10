@@ -4,11 +4,14 @@ import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import ThemeContextWrapper from "./context/themeContext.jsx";
+import DataContextWrapper from "./context/dataContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <ThemeContextWrapper>
-      <App />
+      <DataContextWrapper>
+        <App />
+      </DataContextWrapper>
     </ThemeContextWrapper>
   </BrowserRouter>
 );

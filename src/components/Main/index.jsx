@@ -7,7 +7,6 @@ import Todo from "../../service/Todo";
 import darktworows from "../../assets/icons/darktworows.svg";
 import { PlusCircleFilled } from "@ant-design/icons";
 import { Waveform } from "@uiball/loaders";
-
 function Main() {
   const [openTodoDrawer, setOpenTodoDrawer] = useState(false);
   const [openInProgressDrawer, setOpenInProgressDrawer] = useState(false);

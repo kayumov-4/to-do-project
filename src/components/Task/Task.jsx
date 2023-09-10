@@ -1,10 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import CustomizedProgressBars from "../UI/ProgressBar/ProgressBar";
 import { Draggable } from "react-beautiful-dnd";
 import { InfoCircleFilled } from "@ant-design/icons";
 import { ThemeContext } from "../../context/themeContext";
-import { DatePicker, Drawer, Radio, InputNumber } from "antd";
+import { DatePicker, InputNumber } from "antd";
 import { message } from "antd";
+import { DataContext } from "../../context/dataContext";
+
 import {
   Dialog,
   DialogContent,
@@ -34,12 +36,12 @@ function Task({
   const [categoryInp, setCategoryInp] = useState();
   const [step, setStep] = useState(null);
   const task_step = parseInt(taskStep);
+  const { getTodos, getInProgress, getDone } = useContext(DataContext);
   const calculateProgress = (finished, total) => {
     let prog = Math.round(100 / total);
     return prog * finished;
   };
   const result = calculateProgress(finishedSteps, task_step);
-  //
 
   const updateTask = (e) => {
     e.preventDefault();
@@ -56,7 +58,7 @@ function Task({
       today = yyyy + "-" + mm + "-" + dd;
       dateInp.value = today;
     }
-    const updateTodo = {
+    const editedTodo = {
       taskName: taskNameInp?.value,
       projectName: projectNameInp?.value,
       startDate: dateInp?.value,
@@ -67,12 +69,19 @@ function Task({
       taskStatus: taskStatus,
     };
     if (
-      updateTodo.taskName?.trim().length > 0 &&
-      updateTodo.projectName?.trim().length > 0 &&
+      editedTodo.taskName?.trim().length > 0 &&
+      editedTodo.projectName?.trim().length > 0 &&
       category
     ) {
-      Todo.updateTodo(_id, updateTodo);
-      console.log(updateTodo);
+      Todo.updateTodo(_id, editedTodo).then((res) => console.log(res));
+      if (editedTodo.taskStatus == "todo") {
+        getTodos();
+      } else if (editedTodo.taskStatus == "in-progress") {
+        getInProgress();
+      } else if (editedTodo.taskStatus == "done") {
+        getDone();
+      }
+      console.log(editedTodo);
       taskNameInp.value = "";
       projectNameInp.value = "";
       success();
