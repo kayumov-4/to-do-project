@@ -18,7 +18,7 @@ export default function CustomizedProgressBars({ value }) {
 
   const darkModeColors = {
     notStarted: "bg-red-400",
-    started: "bg-red-400",
+    started: "bg-red-500",
     more20percent: "bg-red-300",
     more40percent: "bg-orange-400",
     more60percent: "bg-emerald-300",

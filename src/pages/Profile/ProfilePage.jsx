@@ -31,14 +31,7 @@ const ProfilePage = () => {
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
   const [editModal, setEditModal] = useState(true);
-  const [fileList, setFileList] = useState([
-    // {
-    //   uid: "-1",
-    //   name: "image.png",
-    //   status: "done",
-    //   url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    // },
-  ]);
+  const [fileList, setFileList] = useState([]);
   const firstName = localStorage.getItem("firstName");
   const lastName = localStorage.getItem("lastName");
   const userName = localStorage.getItem("userName");

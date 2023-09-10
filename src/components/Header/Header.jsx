@@ -111,7 +111,7 @@ function Header() {
                       className="flex w-80 h-[300px]  mr-[90px] mt-6 dark:bg-[#1C1D22]   border-none  dark:outline-[#737477]  flex-col items-center "
                     >
                       <img
-                        className="h-[100px] w-[100px] mt-5"
+                        className="h-[100px] w-[100px] mt-5 rounded-[100%]"
                         src={user}
                         alt=""
                       />
