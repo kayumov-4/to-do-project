@@ -35,6 +35,7 @@ function Task({
   const [finishedSteps, setFinishedSteps] = useState(4);
   const [categoryInp, setCategoryInp] = useState();
   const [step, setStep] = useState(null);
+  const [open, setOpen] = useState(false);
   const task_step = parseInt(taskStep);
   const { getTodos, getInProgress, getDone } = useContext(DataContext);
   const calculateProgress = (finished, total) => {
@@ -43,13 +44,11 @@ function Task({
   };
   const result = calculateProgress(finishedSteps, task_step);
 
-  const updateTask = (e) => {
-    e.preventDefault();
+  const updateTask = async () => {
     const taskNameInp = document.querySelector("#taskName");
     const projectNameInp = document.querySelector("#inputProject");
     const dateInp = document.querySelector("#date");
     const unit_number = document.querySelector("#unit_number");
-
     if (dateInp?.value == "") {
       let today = new Date();
       const dd = String(today.getDate()).padStart(2, "0");
@@ -73,14 +72,27 @@ function Task({
       editedTodo.projectName?.trim().length > 0 &&
       category
     ) {
-      Todo.updateTodo(_id, editedTodo).then((res) => console.log(res));
-      if (editedTodo.taskStatus == "todo") {
-        getTodos();
-      } else if (editedTodo.taskStatus == "in-progress") {
-        getInProgress();
-      } else if (editedTodo.taskStatus == "done") {
-        getDone();
+      try {
+        const response = Todo.updateTodo(_id, editedTodo);
+        const req = await response;
+        console.log(req);
+        if (req.status === 200) {
+          message.success("Task Updated Successfully");
+          setTimeout(() => {
+            setOpen(false);
+          }, 1000);
+          if (editedTodo.taskStatus == "todo") {
+            getTodos();
+          } else if (editedTodo.taskStatus == "in-progress") {
+            getInProgress();
+          } else if (editedTodo.taskStatus == "done") {
+            getDone();
+          }
+        }
+      } catch (error) {
+        console.log(error.message);
       }
+
       console.log(editedTodo);
       taskNameInp.value = "";
       projectNameInp.value = "";
@@ -118,7 +130,7 @@ function Task({
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
               <div className=" flex justify-between items-center">
                 <div>
                   <h1 className="font-exo-bold text-[16px] dark:text-white">
@@ -138,7 +150,12 @@ function Task({
                 </a>
 
                 <DialogContent className="sm:max-w-[425px]">
-                  <form onSubmit={(e) => updateTask(e)}>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      updateTask();
+                    }}
+                  >
                     <DialogHeader>
                       <DialogTitle className="dark:text-white text-center text-2xl  mt-2">
                         Edit Task

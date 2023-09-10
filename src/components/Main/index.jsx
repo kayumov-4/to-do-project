@@ -1,5 +1,5 @@
 import board from "../../assets/icons/board.svg";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { message } from "antd";
 import DrawerComponent from "../UI/Drawer/Drawer";
 import KanbanBoard from "../DnD/KanbanBoard";
@@ -7,14 +7,16 @@ import Todo from "../../service/Todo";
 import darktworows from "../../assets/icons/darktworows.svg";
 import { PlusCircleFilled } from "@ant-design/icons";
 import { Waveform } from "@uiball/loaders";
+import { DataContext } from "../../context/dataContext";
+
 function Main() {
   const [openTodoDrawer, setOpenTodoDrawer] = useState(false);
   const [openInProgressDrawer, setOpenInProgressDrawer] = useState(false);
   const [openDoneDrawer, setOpenDoneDrawer] = useState(false);
-  const [todo, setTodo] = useState([]);
-  const [inProgress, setInProgress] = useState([]);
-  const [done, setDone] = useState([]);
-  const [err, setErr] = useState("");
+  // const [todo, setTodo] = useState([]);
+  // const [inProgress, setInProgress] = useState([]);
+  // const [done, setDone] = useState([]);
+  // const [err, setErr] = useState("");
   const [btn, setBtn] = useState(false);
   const [radioInp, setRadioInp] = useState(null);
   const [category, setCategory] = useState();
@@ -22,39 +24,49 @@ function Main() {
   const [loader, setLoader] = useState(false);
   const [loaderColor, setLoaderColor] = useState("white");
   const theme = localStorage.getItem("theme");
-
-  function getTodos() {
-    Todo.getAllTodos()
-      .then((res) => {
-        console.log(res);
-        const FetchedTodos = res.data.filter((el) => el.taskStatus == "todo");
-        setTodo(FetchedTodos);
-      })
-      .catch((err) => {
-        setErr(err.message);
-        console.log(err);
-      });
-  }
-  function getInProgress() {
-    Todo.getAllTodos()
-      .then((res) => {
-        console.log(res);
-        const FetchedInProgress = res.data.filter(
-          (el) => el.taskStatus == "in-progress"
-        );
-        setInProgress(FetchedInProgress);
-      })
-      .catch((err) => setErr(err.message));
-  }
-  function getDone() {
-    Todo.getAllTodos()
-      .then((res) => {
-        console.log(res);
-        const FetchedDone = res.data.filter((el) => el.taskStatus == "done");
-        setDone(FetchedDone);
-      })
-      .catch((err) => setErr(err.message));
-  }
+  const {
+    todo,
+    setTodo,
+    inProgress,
+    setInProgress,
+    done,
+    setDone,
+    getTodos,
+    getInProgress,
+    getDone,
+  } = useContext(DataContext);
+  // function getTodos() {
+  //   Todo.getAllTodos()
+  //     .then((res) => {
+  //       console.log(res);
+  //       const FetchedTodos = res.data.filter((el) => el.taskStatus == "todo");
+  //       setTodo(FetchedTodos);
+  //     })
+  //     .catch((err) => {
+  //       setErr(err.message);
+  //       console.log(err);
+  //     });
+  // }
+  // function getInProgress() {
+  //   Todo.getAllTodos()
+  //     .then((res) => {
+  //       console.log(res);
+  //       const FetchedInProgress = res.data.filter(
+  //         (el) => el.taskStatus == "in-progress"
+  //       );
+  //       setInProgress(FetchedInProgress);
+  //     })
+  //     .catch((err) => setErr(err.message));
+  // }
+  // function getDone() {
+  //   Todo.getAllTodos()
+  //     .then((res) => {
+  //       console.log(res);
+  //       const FetchedDone = res.data.filter((el) => el.taskStatus == "done");
+  //       setDone(FetchedDone);
+  //     })
+  //     .catch((err) => setErr(err.message));
+  // }
 
   // Todo Drawer
 
