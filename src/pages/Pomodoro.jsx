@@ -39,11 +39,11 @@ const PomodoroTimer = () => {
   return (
     <div className="container mx-auto min-w-[1272px] px-[32px] w-full ">
       <Breadcrumb />
-      <div className="p-6 flex flex-col items-center justify-center mt-[200px]  w-full">
-        <h1 className="text-2xl font-bold mb-4 dark:text-[#bfbfbf]">
+      <div className="p-6 flex flex-col items-center justify-center mt-[230px]  w-full">
+        <h1 className="text-4xl font-bold  dark:text-[#bfbfbf]">
           Pomodoro Timer
         </h1>
-        <div className="text-4xl mb-4 dark:text-[#bfbfbf]">
+        <div className="text-[80px] dark:text-[#bfbfbf]">
           <span className="dark:text-[#bfbfbf]">
             {minutes.toString().padStart(2, "0")}
           </span>
@@ -53,9 +53,9 @@ const PomodoroTimer = () => {
           </span>
         </div>
 
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 mt-2">
           <button
-            className={`px-4 py-2 rounded ${
+            className={`px-8 py-2 rounded ${
               isActive ? "bg-red-500" : "bg-green-500"
             } text-white`}
             onClick={toggleTimer}
@@ -63,7 +63,7 @@ const PomodoroTimer = () => {
             {isActive ? "Pause" : "Start"}
           </button>
           <button
-            className="px-4 py-2 rounded bg-blue-500 text-white"
+            className="px-8 py-2 rounded bg-blue-500 text-white"
             onClick={resetTimer}
           >
             Reset

@@ -13,10 +13,6 @@ function Main() {
   const [openTodoDrawer, setOpenTodoDrawer] = useState(false);
   const [openInProgressDrawer, setOpenInProgressDrawer] = useState(false);
   const [openDoneDrawer, setOpenDoneDrawer] = useState(false);
-  // const [todo, setTodo] = useState([]);
-  // const [inProgress, setInProgress] = useState([]);
-  // const [done, setDone] = useState([]);
-  // const [err, setErr] = useState("");
   const [btn, setBtn] = useState(false);
   const [radioInp, setRadioInp] = useState(null);
   const [category, setCategory] = useState();
