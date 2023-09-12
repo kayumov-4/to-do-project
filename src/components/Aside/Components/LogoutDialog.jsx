@@ -29,7 +29,7 @@ const LogoutDialog = () => {
   return (
     <AlertDialog className="dialog">
       <AlertDialogTrigger>
-        <a href="#" className="a_hover mt-[357px]">
+        <a href="#" className="a_hover mt-[420px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="22"
