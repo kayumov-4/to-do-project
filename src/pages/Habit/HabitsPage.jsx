@@ -110,22 +110,28 @@ const HabitsPage = () => {
                 );
               })}
             </div>
-            <div className="wrapper mt-20 flex flex-col gap-3 p-10 rounded-lg shadow-lg bg-[#e2e2e2] dark:bg-[#1C1D22] w-fit">
+            <div className="wrapper mt-20 flex flex-col gap-3 p-10 w-[270px] rounded-lg shadow-lg bg-[#e2e2e2] dark:bg-[#1C1D22]">
               <h1 className="text-center text-3xl mb-5">Todo</h1>
               {todo.map((el) => {
-                return <CheckboxItem title={el.taskName} key={el._id} />;
+                return (
+                  <CheckboxItem title={el.taskName.slice(0, 10)} key={el._id} />
+                );
               })}
             </div>
-            <div className="wrapper mt-20 flex flex-col gap-3 p-10 rounded-lg shadow-lg bg-[#e2e2e2] dark:bg-[#1C1D22] w-fit">
+            <div className="wrapper mt-20 flex flex-col gap-3 p-10 w-[270px] rounded-lg shadow-lg bg-[#e2e2e2] dark:bg-[#1C1D22]">
               <h1 className="text-center text-3xl mb-5">In-Progress</h1>
               {inProgress.map((el) => {
-                return <CheckboxItem title={el.taskName} key={el._id} />;
+                return (
+                  <CheckboxItem title={el.taskName.slice(0, 10)} key={el._id} />
+                );
               })}
             </div>
-            <div className="wrapper mt-20 flex flex-col gap-3 p-10 rounded-lg shadow-lg bg-[#e2e2e2] dark:bg-[#1C1D22] w-fit">
+            <div className="wrapper mt-20 flex flex-col gap-3 p-10 w-[270px] rounded-lg shadow-lg bg-[#e2e2e2] dark:bg-[#1C1D22]">
               <h1 className="text-center text-3xl mb-5">Done</h1>
               {done.map((el) => {
-                return <CheckboxItem title={el.taskName} key={el._id} />;
+                return (
+                  <CheckboxItem title={el.taskName.slice(0, 10)} key={el._id} />
+                );
               })}
             </div>
           </div>

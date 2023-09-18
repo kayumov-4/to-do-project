@@ -98,10 +98,23 @@ function Task({
       projectNameInp.value = "";
       success();
     } else {
-      error();
+      // error();
     }
   };
-
+  const deleteTask = async () => {
+    try {
+      const response = Todo.deleteTodo(_id);
+      const req = await response;
+      if (req.status === 200) {
+        message.success("Task Deleted Successfully");
+        getTodos();
+        getInProgress();
+        getDone();
+      }
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
   const [messageApi, contextHolder] = message.useMessage();
   const success = () => {
     messageApi
@@ -115,7 +128,7 @@ function Task({
   const error = () => {
     messageApi.open({
       type: "error",
-      content: "Please fill the fields !",
+      content: "Something went wrong !",
     });
   };
 
@@ -153,7 +166,6 @@ function Task({
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
-                      updateTask();
                     }}
                   >
                     <DialogHeader>
@@ -197,7 +209,6 @@ function Task({
                         </Label>
                         <select
                           defaultValue={category}
-                          required
                           onChange={(e) => setCategoryInp(e.target.value)}
                           className="items-center dark:text-white w-[277.25px] border-[#1e293b] dark:bg-[#020617] h-[40px] pl-3  border rounded-lg"
                           name="category"
@@ -241,7 +252,6 @@ function Task({
                         <div className="flex items-center gap-5">
                           <select
                             defaultValue={task_step}
-                            required
                             onChange={(e) => setStep(e.target.value)}
                             className="items-center dark:text-white w-[169px] border-[#1e293b] dark:bg-[#020617] h-[40px] pl-3  border rounded-lg"
                             name="sstep"
@@ -266,7 +276,16 @@ function Task({
                       </div>
                     </div>
                     <DialogFooter>
-                      <Button type="submit">Save changes</Button>
+                      <Button
+                        type="submit"
+                        variant="destructive"
+                        onClick={deleteTask}
+                      >
+                        Delete
+                      </Button>
+                      <Button onClick={updateTask} type="submit">
+                        Save changes
+                      </Button>
                     </DialogFooter>
                   </form>
                 </DialogContent>
